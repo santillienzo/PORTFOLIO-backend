@@ -2,7 +2,7 @@ const {Router} = require('express');
 const router = Router();
 const nodemailer = require('nodemailer')
 
-router.post('/send-email', async (req, res)=>{
+const sendMail = async (req, res)=>{
     const {name, email, subject, message} = req.body;
     console.log(req.body)
     contentHTML = `
@@ -38,6 +38,8 @@ router.post('/send-email', async (req, res)=>{
     });
 
     console.log('Message sent', info.messageId);
-})
+}
+
+router.post('/send-email', sendMail)
 
 module.exports = router;

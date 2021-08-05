@@ -4,11 +4,6 @@ require('dotenv').config();
 const path = require('path');
 
 const cors = require('cors');
-
-// const whitelist = [
-//     'http://localhost:3000',
-//     'https://enzosantilli.com.ar'
-// ]
 app.use(cors());
 
 app.use(express.urlencoded({extended: false}));
@@ -19,12 +14,7 @@ app.use('/', require('./routes/index'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.set('port', process.env.PORT || 5000);
-
-
-
-
-app.listen(app.get('port'), ()=>{
+app.listen(process.env.PORT || 5000, ()=>{
     console.log(`Server on port ${app.get('port')}`)
 });
 
