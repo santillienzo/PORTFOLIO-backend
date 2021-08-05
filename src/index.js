@@ -2,8 +2,14 @@ const express = require('express')
 const app = express();
 require('dotenv').config();
 const path = require('path');
+
 const cors = require('cors');
-app.use(cors());
+
+const whitelist = [
+    'http://localhost:3000',
+    'https://enzosantilli.com.ar'
+]
+app.use(cors({origin: whitelist}));
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json())
