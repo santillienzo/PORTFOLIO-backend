@@ -13,7 +13,8 @@ app.use('/', require('./routes/index'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.set('port', process.env.PORT || 5000)
+app.set('port', process.env.PORT || 5000);
+app.use(cors());
 
 app.listen(app.get('port'), ()=>{
     console.log(`Server on port ${app.get('port')}`)
