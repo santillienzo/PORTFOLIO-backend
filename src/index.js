@@ -9,7 +9,10 @@ const whitelist = [
     'http://localhost:3000',
     'https://enzosantilli.com.ar'
 ]
-app.use(cors({origin: whitelist, mode: "no-corse"}));
+app.use(cors({
+    origin: whitelist, 
+    mode: "no-cors"
+}));
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json())
