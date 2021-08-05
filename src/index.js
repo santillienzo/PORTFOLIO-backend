@@ -5,14 +5,11 @@ const path = require('path');
 
 const cors = require('cors');
 
-const whitelist = [
-    'http://localhost:3000',
-    'https://enzosantilli.com.ar'
-]
-app.use(cors({
-    origin: whitelist, 
-    mode: "no-cors"
-}));
+// const whitelist = [
+//     'http://localhost:3000',
+//     'https://enzosantilli.com.ar'
+// ]
+app.use(cors());
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json())
