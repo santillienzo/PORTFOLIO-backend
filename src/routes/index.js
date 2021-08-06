@@ -4,8 +4,9 @@ const nodemailer = require('nodemailer')
 
 
 router.post('/send-email', async (req, res)=>{
+    console.log(req.body)
+    const {name, email, subject, message} = req.body;
     try {
-        const {name, email, subject, message} = req.body;
         console.log(req.body)
         contentHTML = `
             <h1>Información de usuario</h1>
