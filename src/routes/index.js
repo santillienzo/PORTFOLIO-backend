@@ -2,7 +2,8 @@ const {Router} = require('express');
 const router = Router();
 const nodemailer = require('nodemailer')
 
-const sendMailFunction = async (req, res)=>{
+
+router.post('/send-email', async (req, res)=>{
     const {name, email, subject, message} = req.body;
     console.log(req.body)
     contentHTML = `
@@ -30,25 +31,17 @@ const sendMailFunction = async (req, res)=>{
         }
     });
 
-    let info = await transporter.sendMail({
-        from: "'Enzo Santilli Server' <enzosantilli@enzosantilli.com.ar>",
-        to: 'enzo.santilli16@gmail.com',
-        subject: `${subject}`,
-        html: contentHTML
-    });
-    transporter.sendMail(info, (error, data)=>{
-        if (error){
-            res.status(500).send(error.message)
-        }else{
-            console.log('Message sent', info.messageId);
-            res.status(200).json(req.body)
-        }
-    });
-
-
-
-}
-
-router.post('/send-email', sendMailFunction)
+    try {
+        let info = await transporter.sendMail({
+            from: "'Enzo Santilli Server' <enzosantilli@enzosantilli.com.ar>",
+            to: 'enzo.santilli16@gmail.com',
+            subject: `${subject}`,
+            html: contentHTML
+        });
+    } catch (error) {
+        console.log(error)
+    }
+    console.log('Message sent', info.messageId);
+})
 
 module.exports = router;
