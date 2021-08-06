@@ -15,7 +15,7 @@ app.use('/', require('./routes/index'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(process.env.PORT || 5000, ()=>{
-    console.log(`Server on port ${app.get('port')}`)
+    console.log(`Server on port ${process.env.PORT}`)
 });
 
 

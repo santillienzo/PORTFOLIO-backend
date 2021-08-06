@@ -3,11 +3,11 @@ const router = Router();
 const nodemailer = require('nodemailer')
 
 
-router.post('/send-email', async (req, res)=>{
+
+const sendEmailUser = async (req, res)=>{
     console.log(req.body)
     const {name, email, subject, message} = req.body;
     try {
-        console.log(req.body)
         contentHTML = `
             <h1>Información de usuario</h1>
             <ul>
@@ -40,11 +40,17 @@ router.post('/send-email', async (req, res)=>{
         });
         
         console.log('Message sent', info.messageId);
+        console.log("Se envió la solicitud")
         
     } catch (error) {
+        console.log("Aquí hay un error")
         console.log(error)
     }
     
-})
+}
+
+
+
+router.post('/send-email', sendEmailUser)
 
 module.exports = router;
