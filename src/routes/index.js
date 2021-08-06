@@ -20,6 +20,7 @@ const sendEmailUser = async (req, res)=>{
             ${message}
             </p>
         `
+        console.time("Create Transport")
         let transporter= nodemailer.createTransport({
             host: 'mail.enzosantilli.com.ar',
             port: 465,
@@ -32,15 +33,17 @@ const sendEmailUser = async (req, res)=>{
                 rejectUnauthorized: false
             }
         });
-        let info = await transporter.sendMail({
+        console.timeEnd("Create Transport")
+        console.time("Enviar email")
+        let info = transporter.sendMail({
             from: "'Enzo Santilli Server' <enzosantilli@enzosantilli.com.ar>",
             to: 'enzo.santilli16@gmail.com',
             subject: `${subject}`,
             html: contentHTML
         });
+        console.timeEnd("Enviar email")
         
         console.log('Message sent', info.messageId);
-        console.log("Se envió la solicitud")
         
     } catch (error) {
         console.log("Aquí hay un error")
