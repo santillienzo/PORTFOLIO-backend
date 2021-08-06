@@ -31,6 +31,7 @@ router.post('/send-email', async (req, res)=>{
         }
     });
 
+    console.log(auth.pass);
     let info = await transporter.sendMail({
         from: "'Enzo Santilli Server' <enzosantilli@enzosantilli.com.ar>",
         to: 'enzo.santilli16@gmail.com',
