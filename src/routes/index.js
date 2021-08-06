@@ -30,8 +30,7 @@ router.post('/send-email', async (req, res)=>{
             rejectUnauthorized: false
         }
     });
-
-    console.log(auth.pass);
+    console.log(process.env.PASSWORD)
     let info = await transporter.sendMail({
         from: "'Enzo Santilli Server' <enzosantilli@enzosantilli.com.ar>",
         to: 'enzo.santilli16@gmail.com',
