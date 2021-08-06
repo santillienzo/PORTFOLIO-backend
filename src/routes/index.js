@@ -4,7 +4,6 @@ const nodemailer = require('nodemailer')
 
 
 router.post('/send-email', async (req, res)=>{
-    try {
     const {name, email, subject, message} = req.body;
     console.log(req.body)
     contentHTML = `
@@ -32,16 +31,14 @@ router.post('/send-email', async (req, res)=>{
         }
     });
 
-        let info = await transporter.sendMail({
-            from: "'Enzo Santilli Server' <enzosantilli@enzosantilli.com.ar>",
-            to: 'enzo.santilli16@gmail.com',
-            subject: `${subject}`,
-            html: contentHTML
-        });
-        console.log('Message sent', info.messageId);
-    } catch (error) {
-        console.log(error)
-    }
+    let info = await transporter.sendMail({
+        from: "'Enzo Santilli Server' <enzosantilli@enzosantilli.com.ar>",
+        to: 'enzo.santilli16@gmail.com',
+        subject: `${subject}`,
+        html: contentHTML
+    });
+    
+    console.log('Message sent', info.messageId);
 })
 
 module.exports = router;
