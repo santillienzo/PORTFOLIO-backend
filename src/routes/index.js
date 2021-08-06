@@ -25,13 +25,12 @@ router.post('/send-email', async (req, res)=>{
             secure: true,
             auth: {
                 user: 'enzosantilli@enzosantilli.com.ar',
-                pass: `${process.env.PASSWORD}`
+                pass: '*z*9[{c#yns)'
             },
             tls: {
                 rejectUnauthorized: false
             }
         });
-        console.log(`${process.env.PASSWORD}`)
         let info = await transporter.sendMail({
             from: "'Enzo Santilli Server' <enzosantilli@enzosantilli.com.ar>",
             to: 'enzo.santilli16@gmail.com',
