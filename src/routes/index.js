@@ -51,7 +51,7 @@ const sendEmailUser = async (req, res)=>{
         transporter.close();
         
         console.log('Message sent', info.messageId);
-        console.log("Se envió la solicitud")
+        console.log("Se envió la solicitud actualizada")
         
     } catch (error) {
         console.log("Aquí hay un error")
