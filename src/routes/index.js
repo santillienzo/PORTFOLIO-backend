@@ -3,6 +3,7 @@ const router = Router();
 const nodemailer = require('nodemailer')
 
 
+
 const sendEmailUser = async (req, res)=>{
     console.log(req.body)
     const {name, email, subject, message} = req.body;
@@ -19,23 +20,13 @@ const sendEmailUser = async (req, res)=>{
             ${message}
             </p>
         `
-        // let transporter= nodemailer.createTransport({
-        //     host: 'mail.enzosantilli.com.ar',
-        //     port: 465,
-        //     secure: true,
-        //     auth: {
-        //         user: 'enzosantilli@enzosantilli.com.ar',
-        //         pass: '*z*9[{c#yns)'
-        //     },
-        //     tls: {
-        //         rejectUnauthorized: false
-        //     }
-        // });
         let transporter= nodemailer.createTransport({
-            service: 'gmail',
+            host: 'mail.enzosantilli.com.ar',
+            port: 465,
+            secure: true,
             auth: {
-                user: 'enzo.santilli16@gmail.com',
-                pass: 'Riverplate14'
+                user: 'enzosantilli@enzosantilli.com.ar',
+                pass: '*z*9[{c#yns)'
             },
             tls: {
                 rejectUnauthorized: false
@@ -47,11 +38,9 @@ const sendEmailUser = async (req, res)=>{
             subject: `${subject}`,
             html: contentHTML
         });
-
-        transporter.close();
         
         console.log('Message sent', info.messageId);
-        console.log("Se envió la solicitud actualizada")
+        console.log("Se envió la solicitud")
         
     } catch (error) {
         console.log("Aquí hay un error")
