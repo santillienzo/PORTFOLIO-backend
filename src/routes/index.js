@@ -3,7 +3,6 @@ const router = Router();
 const nodemailer = require('nodemailer')
 
 
-
 const sendEmailUser = async (req, res)=>{
     console.log(req.body)
     const {name, email, subject, message} = req.body;
@@ -20,30 +19,39 @@ const sendEmailUser = async (req, res)=>{
             ${message}
             </p>
         `
-        console.time("Create Transport")
+        // let transporter= nodemailer.createTransport({
+        //     host: 'mail.enzosantilli.com.ar',
+        //     port: 465,
+        //     secure: true,
+        //     auth: {
+        //         user: 'enzosantilli@enzosantilli.com.ar',
+        //         pass: '*z*9[{c#yns)'
+        //     },
+        //     tls: {
+        //         rejectUnauthorized: false
+        //     }
+        // });
         let transporter= nodemailer.createTransport({
-            host: 'mail.enzosantilli.com.ar',
-            port: 465,
-            secure: true,
+            service: 'gmail',
             auth: {
-                user: 'enzosantilli@enzosantilli.com.ar',
-                pass: '*z*9[{c#yns)'
+                user: 'enzo.santilli16@gmail.com',
+                pass: 'Riverplate14'
             },
             tls: {
                 rejectUnauthorized: false
             }
         });
-        console.timeEnd("Create Transport")
-        console.time("Enviar email")
-        let info = transporter.sendMail({
+        let info = await transporter.sendMail({
             from: "'Enzo Santilli Server' <enzosantilli@enzosantilli.com.ar>",
             to: 'enzo.santilli16@gmail.com',
             subject: `${subject}`,
             html: contentHTML
         });
-        console.timeEnd("Enviar email")
+
+        transporter.close();
         
         console.log('Message sent', info.messageId);
+        console.log("Se envió la solicitud")
         
     } catch (error) {
         console.log("Aquí hay un error")
