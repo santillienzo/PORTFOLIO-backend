@@ -34,7 +34,7 @@ const sendEmailUser = async (req, res)=>{
         });
         let info = await transporter.sendMail({
             from: "'Enzo Santilli Server' <enzosantilli@enzosantilli.com.ar>",
-            to: 'enzo.santilli16@gmail.com',
+            to: 'enzosantilli@enzosantilli.com.ar',
             subject: `${subject}`,
             html: contentHTML
         });
