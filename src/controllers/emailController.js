@@ -1,10 +1,8 @@
-const {Router} = require('express');
-const router = Router();
 const nodemailer = require('nodemailer')
 
 
 
-const sendEmailUser = async (req, res)=>{
+exports.sendEmailUser = async (req, res)=>{
     console.log(req.body)
     const {name, email, subject, message} = req.body;
     try {
@@ -48,9 +46,3 @@ const sendEmailUser = async (req, res)=>{
     }
     
 }
-
-
-
-router.post('/send-email', sendEmailUser)
-
-module.exports = router;
