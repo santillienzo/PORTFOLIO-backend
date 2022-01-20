@@ -3,6 +3,7 @@ const nodemailer = require('nodemailer')
 
 
 exports.sendEmailUser = async (req, res)=>{
+    console.log("Envío de email")
     console.log(req.body)
     const {name, email, subject, message} = req.body;
     try {

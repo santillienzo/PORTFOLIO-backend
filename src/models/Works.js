@@ -27,9 +27,10 @@ const worksSchema = new mongoose.Schema({
         data: Buffer,
         contentType: String
     },
-    category: {
-        type:Number
-    },
+    category: [{
+        type:Number,
+        default: []
+    }],
     url:{
         type: String,
         trim: true,
